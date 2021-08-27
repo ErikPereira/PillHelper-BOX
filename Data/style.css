@@ -1,0 +1,115 @@
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #000;
+    margin: 0 auto;
+    background: #d0d0d0;
+    min-width: 260px;
+    max-width: 400px;
+}
+.container {
+    background: #d0d0d0;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px 10px 10px;
+}
+.box {
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 10px 10px 10px 10px;
+}
+.header {
+    background: #909090;
+    border-radius: 10px 10px 0px 0px;
+}
+h1 {
+    font-size: 22px;
+    text-align: left;
+    text-shadow: 2px 2px 2px black;
+    color: #ffffff;
+    background: #909090;
+    border-radius: 10px 10px 0px 0px;
+    padding: 20px;
+    margin: 0px;
+}
+h2 {
+    font-size: 12px;
+    text-align: left;
+    text-shadow: 2px 2px 2px black;
+    color: #ffffff;
+    background: #909090;
+    padding: 4px 8px 4px 8px;
+    margin: 0px;
+}
+h3 {
+    font-size: 12px;
+    text-align: left;
+    font-weight: normal;
+    background: #ffffff;
+    padding: 10px;
+    margin: 0px;
+    border: #909090 solid 2px;
+}
+h4 {
+    font-size: 10px;
+    text-align: center;
+    color: #ffffff;
+    background: #909090;
+    padding: 4px 8px 4px 8px;
+    margin: 0px;
+    border-radius: 0px 0px 10px 10px;
+    text-shadow: 2px 2px 2px black;
+}
+table {
+    width: 100%;
+}
+th {
+    font-size: 12px;
+    background: rgb(60, 153, 234);
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px 5px 5px 5px;
+}
+tbody.h tr th {
+    font-size: 12px;
+    background: #b0b0b0;
+    padding: 5px;
+    border-radius: 3px 0px 0px 3px;
+}
+td {
+    font-size: 12px;
+    background: #fff;
+    padding: 5px;
+    border-radius: 0px 3px 3px 0px;
+}
+.center {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+button[type=submit] {
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+    background-color: rgb(60, 153, 234);
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 5px;
+    width: 60%;
+}
+.link {
+    background-color: transparent;
+    border: 0;
+    color: #00f;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0;
+    position: relative;
+    text-decoration: underline;
+  }
+input {
+    width: 100%;
+}
