@@ -18,8 +18,8 @@
 const byte ESP_LED = 2;
 const byte BUZZER_PIN = 12;
 const byte LED_TAPE_PIN = 13;
-const byte BTN_UPDATE_PIN = 25;
-const byte BTN_STOP_PIN = 26;
+const byte BTN_UPDATE_PIN = 26;
+const byte BTN_STOP_PIN = 25;
 
 const byte NUMLED = 32; // Quantidade de leds que exitem na fita
 
@@ -27,8 +27,9 @@ const byte NUMLED = 32; // Quantidade de leds que exitem na fita
 * DEFINIÇÕES DE CONSTANTES
 ********************************************************************************/
 // URL da API
-const char* API_URL = "http://192.168.1.1:3000/getAlarms";
-
+const char* API_URL = "http://192.168.1.11:3000/getAlarms";
+const char* TOKEN_ACCESS = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiZGV2Iiwic3lzdGVtIjoiQVBJIn0.6lrvVMtHdb6P5f-Au4c36SK1OT8kb0_gg5BuEok_TpU";
+    
 // Intervalo NTP (60s * 60m * 6 = 6h)
 const int NTP_INT = 60 * 60 * 6;
 
@@ -39,7 +40,7 @@ const char* WEBSERVER_HEADER_KEYS[] = {"User-Agent"};
 const byte DNSSERVER_PORT = 53;
 
 // Porta do servidor Web
-const byte WEBSERVER_PORT = 80;
+const byte WEBSERVER_PORT = 8888;
 
 // Número máximo de arquivos no SPIFFS
 const byte DIRECTORY_MAX_FILES = 20;

@@ -168,7 +168,7 @@ void handleCSS() {
 void setup() {
 
     Serial.begin(115200);
-
+    
     log("\nIniciando...");
 
     // SPIFFS
@@ -193,13 +193,16 @@ void setup() {
     // Botões
     pinMode(BTN_UPDATE_PIN, INPUT);
     pinMode(BTN_STOP_PIN, INPUT);
-
+    
+    digitalWrite(BTN_UPDATE_PIN, LOW);
+    digitalWrite(BTN_STOP_PIN, LOW);
     // Schedule entries
     schedule = scheduleGet();
 
     // Conecta WiFi
-    WiFi.begin(cWifiSSID, cWifiPW);
-    log("Conectando WiFi " + String(cWifiSSID));
+    // WiFi.begin(cWifiSSID, cWifiPW);
+    WiFi.begin("Vivas_ElaineNei", "16019800");
+    log("Conectando WiFi " + String("Vivas_ElaineNei"));
     byte b = 0;
     while(WiFi.status() != WL_CONNECTED && b < 10) {
         b++;
@@ -297,6 +300,7 @@ void loop() {
     // Botão de desligar os alarmes --------------------
     if (digitalRead(BTN_STOP_PIN) == HIGH) {
         log("Botão de Stop pressionado");
+
         delay(250);
         flagBuzzer = 0;
         delay(250);

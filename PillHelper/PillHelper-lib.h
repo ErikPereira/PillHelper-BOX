@@ -403,8 +403,9 @@ void apiCheck() {
     String alarmes_schedule = "";
 
     http.begin(API_URL);
-    http.addHeader("Content-Type", "application/json");
-    String httpRequestData = "{\"uuidBox\": \"" + hexStr(ESP.getEfuseMac()) + "\"}";           
+    http.addHeader("Authorization", TOKEN_ACCESS);
+    http.addHeader("content-type", "application/json");
+    String httpRequestData = "{\"uuidBox\": \"" + hexStr(ESP.getEfuseMac()) + "\"}";      
     int httpResponseCode = http.POST(httpRequestData);
     
     log("HTTP Response code: " + String(httpResponseCode));
@@ -413,8 +414,8 @@ void apiCheck() {
         response = http.getString();
         deserializeJson(doc, response);
         int i = 0;
-        while(doc["response"]["alarmes"][i]) {
-            const char* msg_alarme = doc["msg"]["alarmes"][i];
+        while(doc["response"]["alarms"][i]) {       
+            const char* msg_alarme = doc["response"]["alarms"][i];
             alarmes_schedule += (String(msg_alarme) + "\n");
             i++;
         }
@@ -424,4 +425,5 @@ void apiCheck() {
     http.end();
 
     schedule = scheduleGet();
+    log(schedule);
 }
