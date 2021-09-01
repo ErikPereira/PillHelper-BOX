@@ -18,7 +18,7 @@
 const byte ESP_LED = 2;
 const byte BUZZER_PIN = 12;
 const byte LED_TAPE_PIN = 13;
-const byte BTN_UPDATE_PIN = 26;
+const byte BTN_UPDATE_PIN = 33;
 const byte BTN_STOP_PIN = 25;
 
 const byte NUMLED = 32; // Quantidade de leds que exitem na fita

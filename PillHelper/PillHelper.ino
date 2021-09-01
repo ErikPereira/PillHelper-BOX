@@ -1,3 +1,4 @@
+
 /********************************************************************************
 * ARQUIVOS AUXILIARES
 ********************************************************************************/
@@ -290,8 +291,10 @@ void loop() {
     }
 
     // Botão de atualizar os alarmes pela API ----------
+    
     if (digitalRead(BTN_UPDATE_PIN) == HIGH) {
         log("Botão de Update pressionado");
+        delay(250);
         if(WiFi.status()== WL_CONNECTED) {
             apiCheck();
         }
