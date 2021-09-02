@@ -7,6 +7,53 @@
 * FUNÇÕES
 ********************************************************************************/
 
+int ledDictionary(int value){
+    switch (value) {
+        case 0:
+            return 1;   
+        break;
+        case 1:
+            return 1;
+        break;
+        case 2:
+            return 4;
+        break;
+        case 3:
+            return 7;   
+        break;
+        case 4:
+            return 9;
+        break;
+        case 5:
+            return 18;
+        break;
+        case 6:
+            return 16;   
+        break;
+        case 7:
+            return 13;
+        break;
+        case 8:
+            return 10;
+        break;
+        case 9:
+            return 21;   
+        break;
+        case 10:
+            return 24;
+        break;
+        case 11:
+            return 27;
+        break;
+        case 12:
+            return 29;
+        break;
+        default:
+            return 1;
+        break;
+    }
+}
+
 String ipStr(const IPAddress &ip) {
     // Retorna IPAddress como "n.n.n.n"
     return String(ip[0]) + "." + String(ip[1]) + "." + String(ip[2]) + "." + String(ip[3]);
@@ -198,6 +245,13 @@ boolean configRead() {
     StaticJsonDocument<JSON_CONFIG_SIZE> jsonConfig;
 
     File file = SPIFFS.open(F("/Config.json"), "r");
+    log("");
+    log("total de Bytes: ");
+    log(SPIFFS.totalBytes());
+    log("total de uso de Bytes: ");
+    log(SPIFFS.usedBytes());
+    log("total de Bytes livre: ");
+    log(SPIFFS.totalBytes() - SPIFFS.usedBytes());
     if (deserializeJson(jsonConfig, file)) {
         // Falha na leitura, assume valores padrão
         configReset();
@@ -344,7 +398,7 @@ String scheduleChk(const String &schedule) {
     dt = dt.substring(2);
 
     // Check Daily High - DHhh:mm
-    s = "DH" + dt;
+    s = "DH " + dt;
     if (schedule.indexOf(s) != -1) {
         pos_led = String(schedule[schedule.indexOf(s) + 9]) + String(schedule[schedule.indexOf(s) + 10]);
         alarme_sonoro = String(schedule[schedule.indexOf(s) + 13]);
@@ -356,7 +410,7 @@ String scheduleChk(const String &schedule) {
 
     process:  // Process event
     if (event != "") {
-        flagLed = pos_led.toInt();
+        flagLed = ledDictionary(pos_led.toInt());
         flagBuzzer = alarme_sonoro.toInt();
         if (status) {
             // Store HIGH DateTime
@@ -410,7 +464,7 @@ void apiCheck() {
     
     log("HTTP Response code: " + String(httpResponseCode));
 
-    if(httpResponseCode > 0) {
+    if(httpResponseCode == 200) {
         response = http.getString();
         deserializeJson(doc, response);
         int i = 0;
@@ -420,6 +474,20 @@ void apiCheck() {
             i++;
         }
         scheduleSet(alarmes_schedule);
+        digitalWrite(BUZZER_PIN, HIGH);
+        delay(150);
+        digitalWrite(BUZZER_PIN, LOW);
+        delay(150);
+    }
+    else {
+      digitalWrite(BUZZER_PIN, HIGH);
+        delay(150);
+        digitalWrite(BUZZER_PIN, LOW);
+        delay(150);
+        digitalWrite(BUZZER_PIN, HIGH);
+        delay(150);
+        digitalWrite(BUZZER_PIN, LOW);
+        delay(150);
     }
 
     http.end();

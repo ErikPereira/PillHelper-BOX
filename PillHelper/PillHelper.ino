@@ -1,3 +1,4 @@
+
 /********************************************************************************
 * ARQUIVOS AUXILIARES
 ********************************************************************************/
@@ -200,9 +201,9 @@ void setup() {
     schedule = scheduleGet();
 
     // Conecta WiFi
-    // WiFi.begin(cWifiSSID, cWifiPW);
-    WiFi.begin("Vivas_ElaineNei", "16019800");
-    log("Conectando WiFi " + String("Vivas_ElaineNei"));
+    WiFi.begin(cWifiSSID, cWifiPW);
+    // WiFi.begin("Vivas_ElaineNei", "16019800");
+    log("Conectando WiFi " + String(cWifiSSID));
     byte b = 0;
     while(WiFi.status() != WL_CONNECTED && b < 10) {
         b++;
@@ -290,8 +291,10 @@ void loop() {
     }
 
     // Botão de atualizar os alarmes pela API ----------
+    
     if (digitalRead(BTN_UPDATE_PIN) == HIGH) {
         log("Botão de Update pressionado");
+        delay(250);
         if(WiFi.status()== WL_CONNECTED) {
             apiCheck();
         }
