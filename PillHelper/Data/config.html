@@ -1,0 +1,89 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+    <title>PillHelper</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <script>
+        function ssidWifi(ssid) {
+            document.getElementById("ssid").value = ssid;
+        }
+    </script>
+
+    <div class="container">
+        <div class="box">
+            <table class="header">
+                <tr>
+                    <td class="header"><h1>PillHelper</h1></td>
+                    <td class="header"><h2>ID da Caixa: #ID#</h2>
+                        <h2>Status: #status#</h2></td>
+                </tr>
+
+            </table>
+            
+            
+
+            <table>
+        
+                <table>
+
+                    #redes#
+        
+                </table>
+
+                <form name="config" action="/configSave" method="post">
+                    
+                    <table>
+                        <tr title="Configurações de WiFi">
+                            <td title="Nome da Rede Wi-Fi para conexão">
+                                SSID
+                                <input type="text" id="ssid" name="ssid" size="25" maxlength="35">
+                            </td>
+                        </tr>
+
+                        <tr title="Senha da Rede Wi-Fi para conexão">
+                            <td title="Senha da Rede Wi-Fi para conexão">
+                                Senha
+                                <input type="password" name="wifiPW" size="25" maxlength="35">
+                            </td>
+                        </tr>
+                    
+        
+                        <tr>
+                            <td title="Fuso horário local">
+                                Fuso Horário
+                                <input type="number" name="timeZone" value="#timeZone#" min="-12" max="12">
+                            </td>
+                        </tr>
+            
+                        <tr>
+                            <td class="center" title="Procurar redes disponíveis novamente">
+                                <a href="/">Procurar Redes Novamente</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="center" title="Gravar Configurações">
+                                <button type="submit">Gravar</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="center" title="Reiniciar Caixa">
+                                <a href="/reboot">Reiniciar Caixa</a>
+                            </td>
+                        </tr>
+            
+                    </table>
+
+                </form>
+
+            </table>
+            
+            <h4>©PillHelper - 2020</h4>
+        </div>
+    </div>
+</body>
+</html>
